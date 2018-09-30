@@ -1,0 +1,30 @@
+tbody tr:nth-of-type(2n) {
+    background-color: #0077ff
+}
+
+tbody tr:nth-of-type(2n+1) {
+    background-color: #ffd900
+}
+
+tbody tr th {
+    font-weight: normal;
+    font-style: italic;
+}
+
+div.outer-content {
+    background-color: #f700ff;
+    margin: 20px auto 0 0;
+    padding: 10px 0;
+    width:75%;
+}
+
+div#inner-content {
+    background-color: #0077ff;
+    margin: 0 auto;
+    text-align: center;
+    width: 75%;
+}
+
+input {
+    margin: 5px;
+}
