@@ -2,7 +2,11 @@ function buildList(list) {
     var result = [];
     for (var i = 0; i < list.length; i++) {
         var item = 'item' + list[i];
-        result.push( function() {alert(item + ' ' + list[i])} );
+        result[i] = function(itemText, listItem) { 
+            return function() {
+                alert(itemText + ' ' + list[listItem]);
+            }
+        }(item, i);
     }
     return result;
 }
