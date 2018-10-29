@@ -1,3 +1,10 @@
+/*
+
+CS 290 Week 5 Assignment -  DOM and Events
+Author: Eric Colvin Morgan
+
+*/
+
 const CELL_FORMATING = "1px solid Gainsboro";
 const SELECTED_CELL_FORMATING = "2px solid Black";
 
@@ -48,7 +55,7 @@ class Grid {
         for (let headerCol = 1; headerCol <= this.width; headerCol++) {
             let headerCell = document.createElement("th");
             headerCell.style.border = CELL_FORMATING;
-            headerCell.innerText = "Header " + headerCol;
+            headerCell.textContent = "Header " + headerCol;
             headerTr.appendChild(headerCell);
         }
 
@@ -62,7 +69,10 @@ class Grid {
                 detailCell.setAttribute("detail-row", detailRow);
                 detailCell.setAttribute("detail-col", detailCol);
                 detailCell.style.border = CELL_FORMATING;
-                detailCell.innerText = detailCol + ", " + detailRow;
+
+                //Per requirements, this should be in R, C format, but per grading rubic this should be in C, R format.
+                //This was addressed in Piazza #78, and Fengfei Zheng indicted specific order does not matter.
+                detailCell.textContent = detailRow + ", " + detailCol;
                 detailTr.appendChild(detailCell);
             }
         }
@@ -70,38 +80,36 @@ class Grid {
         document.body.appendChild(gridTable);
         this.highlightCurrent();
 
+        //Navigation Button Creation Function
+        let createButton = (direction) => {
+            let button = document.createElement("button");
+            button.addEventListener("click", () => {
+                this.moveCurrent(direction);
+            });
+            button.textContent = direction;
+            return button;
+        }
+
         //Initialize Navigation Buttons
         //Top Buttons
         let navigationTop = document.createElement("div");
         navigationTop.style.textAlign = "center";
-        let buttonUp = document.createElement("button");
-        buttonUp.addEventListener("click", () => {
-            this.moveCurrent(1);
-        });
-        buttonUp.innerText = "Up";
+        
+        let buttonUp = createButton("Up");
         navigationTop.appendChild(buttonUp);
         document.body.appendChild(navigationTop);
 
         //Middle Buttons
         let navigationMiddle = document.createElement("div");
         navigationMiddle.style.textAlign = "center";
-        let buttonLeft = document.createElement("button");
-        buttonLeft.innerText = "Left";
-        buttonLeft.addEventListener("click", () => {
-            this.moveCurrent(4);
-        });
-
+        let buttonLeft = createButton("Left");
+        let buttonRight = createButton("Right");
+        
         let buttonMark = document.createElement("button");
         buttonMark.addEventListener("click", () => {
             this.markCurrent();
         })
-        buttonMark.innerText = "Mark Cell";
-
-        let buttonRight = document.createElement("button");
-        buttonRight.addEventListener("click", () => {
-            this.moveCurrent(2);
-        });
-        buttonRight.innerText = "Right";
+        buttonMark.textContent = "Mark Cell";
 
         navigationMiddle.appendChild(buttonLeft);
         navigationMiddle.appendChild(buttonMark);
@@ -111,11 +119,7 @@ class Grid {
         //Bottom Buttons
         let navigationBottom = document.createElement("div");
         navigationBottom.style.textAlign = "center";
-        let buttonDown = document.createElement("button");
-        buttonDown.addEventListener("click", () => {
-            this.moveCurrent(3);
-        });
-        buttonDown.innerText = "Down";
+        let buttonDown = createButton("Down");
         navigationBottom.appendChild(buttonDown);
         document.body.appendChild(navigationBottom);
 
@@ -138,19 +142,19 @@ class Grid {
 
     moveCurrent(direction) {
         switch (direction) {
-            case 1:
+            case "Up":
                 this.currentRow -= 1;
                 break;
 
-            case 2:
+            case "Right":
                 this.currentCol += 1;
                 break;
 
-            case 3:
+            case "Down":
                 this.currentRow += 1;
                 break;
 
-            case 4:
+            case "Left":
                 this.currentCol -= 1;
                 break;
         }

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Week 6 Activity - Weather</title>
+    <style type="text/css">
+        input {
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <fieldset>
+            <legend>Weather Request - Enter ZIP or City Name (ZIP Given Preference)</legend>
+            <label for="zipCode">ZIP Code</label>
+            <input type="text" name="zipCode" id="zipCode"><br>
+            <label for="cityName">City Name</label>
+            <input type="text" name="cityName" id="cityName"><br>
+            <input type="submit" id="weatherRequest">
+        </fieldset>
+    </form>
+    <div>
+        <h2>Weather Result</h2>
+        <ul>
+            <span id="weatherResults"></span></li>
+        </ul>
+    </div>
+
+    <form>
+        <fieldset>
+            <legend>Sample POST Submission</legend>
+            <label for="field1">Field 1</label>
+            <input type="text" name="field1" id="field1"><br>
+            <label for="field2">Field 2</label>
+            <input type="text" name="field2" id="field2"><br>
+            <input type="submit" id="postSubmit">
+        </fieldset>
+    </form>
+    <div>
+        <h2>Sample POST Result</h2>
+        <ul>
+            <span id="postResults"></span></li>
+        </ul>
+    </div>
+    <script src="week6Activity.js"></script>
+</body>
+
+</html>
