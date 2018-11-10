@@ -13,20 +13,20 @@ function bindButtons() {
         let requestCity = weatherZip == '' ? weatherName : weatherZip;
         req.open('GET', baseRequestUrl + 'q=' + requestCity + ',US' + '&appid=' + apiKey + '&units=imperial', true);
         req.addEventListener('load', function () {
+            let result = document.getElementById('weatherResults');
             if (req.status >= 200 && req.status < 400) {
                 let response = JSON.parse(req.responseText);
                 if (response.main == null) {
-                    document.getElementById('weatherResults').textContent = 'Invalid Request';
+                    result.textContent = 'Invalid Request';
                 }
-                else {
-                    let result = document.getElementById('weatherResults');
+                else {                    
                     result.innerHTML = '<p>City: ' + response.name + ', ' + response.sys.country + '</p>';
                     result.innerHTML += '<p>Temperature: ' + response.main.temp + ' F</p>';
                     result.innerHTML += '<p>Humidity: ' + response.main.humidity + '%</p>';
                     result.innerHTML += '<p>Pressure: ' + response.main.pressure + ' hPa</p>';
                 }
             } else {
-                document.getElementById('weatherResults').textContent = 'Invalid Request';
+                result.textContent = 'Invalid Request';
             }
         });
 
