@@ -2,7 +2,7 @@
   "name": "week8-assignment",
   "version": "1.0.0",
   "description": "Week 8 Assignment",
-  "main": "app.js",
+  "main": "checker.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

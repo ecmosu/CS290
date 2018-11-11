@@ -11,7 +11,7 @@ var handlebars = require('express-handlebars').create({layoutsDir:layoutsPath, d
 app.engine('handlebars', handlebars.engine);
 app.set('views', viewsPath);
 app.set('view engine', 'handlebars');
-app.set('port', 6543);
+app.set('port', process.argv[2]);
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
