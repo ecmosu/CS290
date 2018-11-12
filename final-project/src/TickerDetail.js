@@ -1,5 +1,6 @@
 import React from 'react';
 
+const CORRECTION_MARKET_THRESHOLD = -.1;
 const BEAR_MARKET_THRESHOLD = -.2;
 
 export default class TickerDetail extends React.Component {
@@ -32,7 +33,7 @@ export default class TickerDetail extends React.Component {
                         error
                     });
                 }
-            );
+            )
     }
 
     formatter(loc, settings) {
@@ -70,6 +71,11 @@ export default class TickerDetail extends React.Component {
                                 This security is currently in bear territory when compared to its 52 week high!
                             </div>)
                         }
+                        else if (percentChange <= CORRECTION_MARKET_THRESHOLD){
+                            return (<div className="alert alert-warning" role="alert">
+                            This security is currently in correction territory when compared to its 52 week high!
+                            </div>)
+                        }
                         else {
                             return (<div className="alert alert-primary" role="alert">
                                 This security is not in bear territory!
@@ -77,52 +83,52 @@ export default class TickerDetail extends React.Component {
                         }
                     })()}
                     <div className="card mt-3">
-                    <div class="card-body">
-                    <h1 className="card-title">{quoteResult.companyName}</h1>
-                    <h4 class="card-subtitle mb-2 text-muted">Security Detail</h4>
-                        <dl className="row">
-                            <dt className="col-3">
-                                Symbol
+                        <div className="card-body">
+                            <h1 className="card-title">{quoteResult.companyName}</h1>
+                            <h4 className="card-subtitle mb-2 text-muted">Security Detail</h4>
+                            <dl className="row">
+                                <dt className="col-3">
+                                    Symbol
                         </dt>
-                            <dd className="col-3">
-                                {quoteResult.symbol}
-                            </dd>
-                            <dt className="col-3">
-                                As Of
+                                <dd className="col-3">
+                                    {quoteResult.symbol}
+                                </dd>
+                                <dt className="col-3">
+                                    As Of
                             </dt>
-                            <dd className="col-3">
-                                {quoteResult.latestTime}
-                            </dd>
-                        </dl>
-                        <dl className="row">
-                            <dt className="col-3">
-                                Latest Price
+                                <dd className="col-3">
+                                    {quoteResult.latestTime}
+                                </dd>
+                            </dl>
+                            <dl className="row">
+                                <dt className="col-3">
+                                    Latest Price
                         </dt>
-                            <dd className="col-3">
-                                {quoteResult.latestPrice}
-                            </dd>
-                            <dt className="col-3">
-                                52 Week High
+                                <dd className="col-3">
+                                    {quoteResult.latestPrice}
+                                </dd>
+                                <dt className="col-3">
+                                    52 Week High
                             </dt>
-                            <dd className="col-3">
-                                {quoteResult.week52High}
-                            </dd>
-                        </dl>
-                        <dl className="row">
-                            <dt className="col-3">
-                                Distance From High
+                                <dd className="col-3">
+                                    {quoteResult.week52High}
+                                </dd>
+                            </dl>
+                            <dl className="row">
+                                <dt className="col-3">
+                                    Distance From High
                         </dt>
-                            <dd className="col-3">
-                                {decimalFormater(distanceFromHigh)}
-                            </dd>
-                            <dt className="col-3">
-                                % Change
+                                <dd className="col-3">
+                                    {decimalFormater(distanceFromHigh)}
+                                </dd>
+                                <dt className="col-3">
+                                    % Change
                             </dt>
-                            <dd className="col-3">
-                                {percentFormater(percentChange)}
-                            </dd>
-                        </dl>
-                        </div>    
+                                <dd className="col-3">
+                                    {percentFormater(percentChange)}
+                                </dd>
+                            </dl>
+                        </div>
                     </div>
                 </div>
             );

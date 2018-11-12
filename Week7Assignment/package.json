@@ -1,7 +1,7 @@
 {
-  "name": "week8-assignment",
+  "name": "week7-assignment",
   "version": "1.0.0",
-  "description": "Week 8 Assignment",
+  "description": "Week 7 Assignment",
   "main": "checker.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
