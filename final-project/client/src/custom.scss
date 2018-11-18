@@ -6,7 +6,7 @@ $theme-colors: (
 @import "../node_modules/bootstrap/scss/bootstrap";
 
 .scroll-box {
-  max-height: 100px;
+  max-height: 200px;
   overflow-x: auto;
   border:1px solid rgba(0, 0, 0, 0.125);
 }
@@ -20,4 +20,16 @@ $theme-colors: (
   left:0;
   right:0;
   background:rgba(0,0,0,0.7);
+}
+
+.navbar-dark .navbar-brand {
+  color: $warning;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: rgba(255, 255, 255, 1);
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: $warning;
 }

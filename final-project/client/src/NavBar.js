@@ -30,22 +30,28 @@ export default class NavBar extends React.Component {
     render() {
         return (
             <div>
-                <Navbar color="dark" dark expand="md">
-                    <NavbarBrand href="/">Are We In A Bear Market?</NavbarBrand>
+                <Navbar color="primary" dark expand="md">
+                    <NavbarBrand href="./">Are We In A Bear Market?</NavbarBrand>
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
                             <NavItem>
-                                <NavLink tag={Link} to="/">Main</NavLink>
+                                <NavLink tag={Link} to="./">Main</NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink tag={Link} to="/methodology">Calculation Methodology</NavLink>
+                                <NavLink tag={Link} to="./securitylookup">Security Lookup</NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink tag={Link} to="/sources">Sources</NavLink>
+                                <NavLink tag={Link} to="./methodology">Calculation Methodology</NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink tag={Link} to="/subscribe">Subscribe</NavLink>
+                                <NavLink tag={Link} to="./sources">Sources</NavLink>
+                            </NavItem>
+                            <NavItem>
+                                <NavLink tag={Link} to="./subscribe">Subscribe</NavLink>
+                            </NavItem>
+                            <NavItem>
+                                <NavLink tag={Link} to="./rubric">Requirement Locations</NavLink>
                             </NavItem>
                         </Nav>
                     </Collapse>

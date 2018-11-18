@@ -41,7 +41,7 @@ function bindButtons() {
         payload.field2 = document.getElementById('field2').value;
 
         //Use ZIP if entered, and use city name if not entered
-        req.open('POST', 'http://httpbin.org/post', true);
+        req.open('POST', 'http://flip3.engr.oregonstate.edu:6543/data?type=1&value=dlkfj', true);
         req.setRequestHeader('Content-Type', 'application/json');
         req.addEventListener('load', function () {
             let result = document.getElementById('postResults');

@@ -20,6 +20,7 @@ export default class TickerDetail extends React.Component {
             .then(
                 (result) => {
                     this.setState({
+                        error: null,
                         isLoaded: true,
                         quoteResult: result
                     });
@@ -59,7 +60,11 @@ export default class TickerDetail extends React.Component {
         const distanceFromHigh = (quoteResult.latestPrice - quoteResult.week52High);
         const percentChange = (distanceFromHigh / quoteResult.week52High);
         if (error) {
-            return <div>Error: {error.message}</div>;
+            return (<div>
+                <div className="alert alert-primary" role="alert">
+                    Please enter a valid security!
+                </div>
+            </div>)
         } else if (!isLoaded) {
             return <div>Loading...</div>;
         } else {
@@ -71,9 +76,9 @@ export default class TickerDetail extends React.Component {
                                 This security is currently in bear territory when compared to its 52 week high!
                             </div>)
                         }
-                        else if (percentChange <= CORRECTION_MARKET_THRESHOLD){
+                        else if (percentChange <= CORRECTION_MARKET_THRESHOLD) {
                             return (<div className="alert alert-warning" role="alert">
-                            This security is currently in correction territory when compared to its 52 week high!
+                                This security is currently in correction territory when compared to its 52 week high!
                             </div>)
                         }
                         else {
