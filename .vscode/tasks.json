@@ -1,0 +1,20 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "npm",
+            "script": "build",
+            "path": "final-project/client/",
+            "problemMatcher": []
+        },
+        {
+            "label": "Build Week 9",
+            "type": "shell",
+            "command": [
+                "./Week9Assignment/node_modules/handlebars/bin/handlebars ./Week9Assignment/views/partials/ -f ./Week9Assignment/public/prerenderedPartials.js"
+            ]            
+        }
+    ]
+}

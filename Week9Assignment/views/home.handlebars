@@ -1,0 +1,154 @@
+<h1>Exercise Log</h1>
+
+<div class="card">
+    <h5 class="card-header">Log New Exercise</h5>
+    <div class="card-body">
+        <form id="newExerciseForm" class="needs-validation" novalidate>
+            <div class="form-row">
+                <div class="col-md-8 mb-3">
+                    <label for="newExerciseName">Exercise Name</label>
+                    <input type="text" class="clear-control form-control" id="newExerciseName" placeholder="Exercise Name" required>
+                    <div class="invalid-feedback">
+                        Please provide an exercise name.
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="newExerciseDate">Date</label>
+                    <input type="text" id="newExerciseDate" placeholder="Date" class="datepicker clear-control form-control" data-provide="datepicker"
+                        aria-label="New Exercise Date" required>
+                    <div class="invalid-feedback">
+                        Please provide an exercise date.
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-5 mb-3">
+                    <label for="newExerciseReps">Reps</label>
+                    <input type="number" class="clear-control form-control" id="newExerciseReps" placeholder="Exercise Reps" min="0"
+                        required>
+                    <div class="invalid-feedback">
+                        Please provide a valid number of reps.
+                    </div>
+                </div>
+                <div class="col-md-5 mb-3">
+                    <label for="newExerciseWeight">Weight</label>
+                    <input type="number" class="clear-control form-control" id="newExerciseWeight" placeholder="Exercise Weight" min="0"
+                        required>
+                    <div class="invalid-feedback">
+                        Please provide a valid weight.
+                    </div>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <label for="newExerciseLbs">Unit</label>
+                    <select class="custom-select" id="newExerciseLbs">
+                        <option value="0">Kg</option>
+                        <option value="1" selected>Lbs</option>
+                    </select>
+                </div>
+            </div>
+            <button class="btn btn-primary" id="newExerciseSave" type="submit">Save Exercise</button>
+        </form>
+    </div>
+</div>
+
+<div id="statusMessage" class="mt-3">
+
+</div>
+<div id="exercises" class="mt-3"></div>
+
+<!-- Edit Modal -->
+<div class="modal fade" id="modalUpdateExercise" data-target="#modalUpdateExercise" tabindex="-1" role="dialog"
+    aria-labelledby="modalUpdateLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <form id="modalEditExerciseForm" class="needs-validation" novalidate>
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalUpdateLabel">Edit Exercise</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <input type="hidden" class="clear-control" id="modalEditId">
+
+                        <div class="form-row">
+                            <div class="col-md-8 mb-3">
+                                <label for="modalEditName" class="col-form-label">Name:</label>
+                                <input type="text" id="modalEditName" class="clear-control form-control" aria-label="Edit Name"
+                                    required>
+                                <div class="invalid-feedback">
+                                    Please provide a exercise name.
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="modalEditDate" class="col-form-label">Date:</label>
+                                <input type="text" id="modalEditDate" class="datepicker clear-control form-control" data-provide="datepicker"
+                                    aria-label="Edit Date">
+                                <div class="invalid-feedback">
+                                    Please provide a valid date.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="col-md-5 mb-3">
+                                <label for="modalEditReps" class="col-form-label">Reps:</label>
+                                <input type="number" id="modalEditReps" class="clear-control form-control" aria-label="Edit Reps"
+                                    required min=0>
+                                <div class="invalid-feedback">
+                                    Please provide a valid number of reps.
+                                </div>
+
+                            </div>
+                            <div class="col-md-5 mb-3">
+                                <label for="modalEditWeight" class="col-form-label">Weight:</label>
+                                <input type="number" id="modalEditWeight" class="clear-control form-control" aria-label="Edit Weight"
+                                    required min=0>
+                                <div class="invalid-feedback">
+                                    Please provide a valid weight.
+                                </div>
+                            </div>
+                            <div class="col-md-2 mb-3">
+                                <label for="modalEditLbs" class="col-form-label">Unit:</label>
+                                <select id="modalEditLbs" class="custom-select">
+                                    <option value="0">Kg</option>
+                                    <option value="1">Lbs</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="toggleExerciseEdit(false)">Close</button>
+                    <button type="submit" id="modalEditExerciseSubmit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Modal -->
+<div class="modal fade" id="modalDeleteExercise" data-target="#modalDeleteExercise" tabindex="-1" role="dialog"
+    aria-labelledby="modalDeleteLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <form id="modalDeleteExerciseForm" class="needs-validation" novalidate>
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalDeleteLabel">Confirm Delete Exercise</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <input id="modalDeleteId" class="clear-control" type="hidden">
+                <div id="modalDeleteExerciseBody" class="modal-body"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="toggleExerciseDelete(false)">Close</button>
+                    <button type="submit" id="modalDeleteExerciseSubmit" class="btn btn-primary">Delete</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="main.js"></script>
