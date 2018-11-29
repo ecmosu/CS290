@@ -54,7 +54,7 @@ app.get('/exercises', function (req, res) {
   context.type = req.method;
   context.results = [];
   mysql.pool.query(`SELECT id, name, reps, weight, DATE_FORMAT(date, '` + dateFormat + `') AS date, lbs
-    FROM workouts`, function (err, result, fields) {
+    FROM workouts ORDER BY workouts.date DESC`, function (err, result, fields) {
       if (err) console.log(err);
       context.results = result;
       res.send(context);

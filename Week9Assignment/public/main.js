@@ -22,7 +22,10 @@ const bindButtons = () => {
     Array.from(document.getElementsByClassName('deleteExercise')).forEach((element) => {
         element.addEventListener('click', function (event) {
             const exercise = getExercise(this);
-            toggleExerciseDelete(true, exercise);
+            deleteExercise(exercise);
+            //Removing pop-up prompt to confirm delete as requirements
+            //state "hitting the delete button should immediately remove the row." 
+            //toggleExerciseDelete(true, exercise);
         });
     });
 }
