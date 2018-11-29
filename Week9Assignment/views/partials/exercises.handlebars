@@ -1,0 +1,37 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Reps</th>
+            <th scope="col">Weight</th>
+            <th scope="col">Date</th>
+            <th scope="col">Unit</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each results}}
+        <tr>
+            <input type="hidden" class="exerciseId" value="{{this.id}}">
+            <input type="hidden" class="exerciseName" value="{{this.name}}">
+            <input type="hidden" class="exerciseReps" value="{{this.reps}}">
+            <input type="hidden" class="exerciseWeight" value="{{this.weight}}">
+            <input type="hidden" class="exerciseDate" value="{{this.date}}">
+            <input type="hidden" class="exerciseLbs" value="{{this.lbs}}">
+            <td>{{this.name}}</td>
+            <td>{{this.reps}}</td>
+            <td>{{this.weight}}</td>
+            <td>{{this.date}}</td>
+            {{#if this.lbs}}
+            <td>lbs</td>
+            {{else}}
+            <td>kg</td>
+            {{/if}}
+            <td>
+                <input type="submit" class="editExercise btn btn-primary" value="Edit">
+                <input type="submit" class="deleteExercise btn btn-danger" value="Delete">
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

@@ -1,0 +1,20 @@
+{{!-- Helpers Used Below From https://handlebarsjs.com/builtin_helpers.html --}}
+<h1>{{type}} Request Received</h1>
+
+{{#if queryDetail}}
+<h4>URL Query Data</h4>
+<ul>
+  {{#each queryDetail}}
+    <li>{{this.name}}: {{this.value}}
+  {{/each}}
+</ul>
+{{/if}}
+
+{{#if bodyDetail}}
+<h4>POST Request Data</h4>
+<ul>
+  {{#each bodyDetail}}
+    <li>{{this.name}}: {{this.value}}
+  {{/each}}
+</ul>
+{{/if}}
