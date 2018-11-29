@@ -10,8 +10,8 @@ export default class Methodology extends React.Component {
                     <li>There is no official definition of a bear market.</li>
                     <li>This site assumes the following:</li>
                     <ul>
-                        <li>A drop of 10% from the 52 week high constitues corretion territory.</li>
-                        <li>A drop of 20% from the 52 week high constitues a bear market.</li>
+                        <li>A drop of 10% from the 52 week high constitutes correction territory.</li>
+                        <li>A drop of 20% from the 52 week high constitutes a bear market.</li>
                     </ul>
                 </ul>                    
             </div>
